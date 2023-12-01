@@ -5,12 +5,13 @@ class ProductModel {
       {required this.id,
       required this.title,
       required this.description,
-      required this.imgae,
+      required this.image,
+      required this.category,
       required this.price,
       required this.rating});
 
   final int id;
-  final String title, description, imgae;
+  final String title, description, image, category;
   final num price;
   final RatingModel rating;
 
@@ -20,7 +21,8 @@ class ProductModel {
       title: jsonData['title'],
       price: jsonData['price'],
       description: jsonData['description'],
-      imgae: jsonData['image'],
+      category: jsonData['category'],
+      image: jsonData['image'],
       rating: RatingModel.fromJson(jsonData['rating']),
     );
   }

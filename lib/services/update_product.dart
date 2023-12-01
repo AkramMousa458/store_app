@@ -7,12 +7,13 @@ class UpdateProductService {
       required String price,
       required String description,
       required String image,
+      required int id,
       required String category}) async {
     Map<String, dynamic> data = await Api().post(
       url: 'https://fakestoreapi.com/products',
       body: {
         'title': title,
-        'price': price,
+        'price': price.toString(),
         'description': description,
         'image': image,
         'category': category,
@@ -22,11 +23,3 @@ class UpdateProductService {
     return ProductModel.fromJson(data);
   }
 }
-
-/*
-'title': 'NFT photo',
-      'price': '20',
-      'description': 'photo of me on shore',
-      'image': ' https://i.pravatar.cc',
-      'category': 'electronic',
-*/

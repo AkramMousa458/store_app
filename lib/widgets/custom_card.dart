@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:store_app/models/product_model.dart';
 
-class CustomCard extends StatelessWidget {
+class CustomCard extends StatefulWidget {
   const CustomCard({
     super.key,
     required this.product,
   });
 
   final ProductModel product;
+
+  @override
+  State<CustomCard> createState() => _CustomCardState();
+}
+
+class _CustomCardState extends State<CustomCard> {
+  bool isFav = false;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +37,7 @@ class CustomCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    product.title,
+                    widget.product.title,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
@@ -41,10 +48,22 @@ class CustomCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('\$ ${product.price.toString()}'),
+                      Text('\$ ${widget.product.price.toString()}'),
+                      Row(
+                        children: [
+                          Icon(Icons.star_rate_rounded,
+                              color: Colors.amber[500]),
+                          Text(widget.product.rating.rate.toString()),
+                        ],
+                      ),
                       IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.favorite_border),
+                        onPressed: () {
+                          isFav == false ? isFav = true : isFav = false;
+                          setState(() {});
+                        },
+                        icon: isFav == false
+                            ? const Icon(Icons.favorite_border)
+                            : const Icon(Icons.favorite, color: Colors.red),
                       )
                     ],
                   )
@@ -58,10 +77,9 @@ class CustomCard extends StatelessWidget {
           left: 0,
           bottom: 85,
           child: Image.network(
-            product.imgae,
+            widget.product.image,
             height: MediaQuery.sizeOf(context).width / 3.8,
             width: 100,
-            // 'https://static.vecteezy.com/system/resources/previews/008/847/318/non_2x/isolated-black-t-shirt-front-free-png.png ',
           ),
         )
       ],

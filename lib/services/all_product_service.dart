@@ -2,7 +2,7 @@ import 'package:store_app/helper/api.dart';
 import 'package:store_app/models/product_model.dart';
 
 class AllProdctsService {
-  Future<List<ProductModel>> getAllProducts() async {
+  static Future<List<ProductModel>> getAllProducts() async {
     List<dynamic> data =
         await Api().get(url: 'https://fakestoreapi.com/products');
 

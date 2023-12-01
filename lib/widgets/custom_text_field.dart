@@ -6,12 +6,14 @@ class CustomTextFieldWidget extends StatelessWidget {
     required this.hintText,
     required this.icon,
     this.isPassword,
+    this.textType,
     this.onChanged,
   });
 
   final String hintText;
   final Icon icon;
   final bool? isPassword;
+  final TextInputType? textType;
 
   final Function(String)? onChanged;
 
@@ -19,6 +21,7 @@ class CustomTextFieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       onChanged: onChanged,
+      keyboardType: textType ?? TextInputType.text,
       obscureText: isPassword == null
           ? false
           : isPassword == false

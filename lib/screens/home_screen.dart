@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
           foregroundColor: Colors.black,
         ),
         body: FutureBuilder<List<ProductModel>>(
-          future: AllProdctsService().getAllProducts(),
+          future: AllProdctsService.getAllProducts(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return GridView.builder(
@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                       onLongPress: () {
-                        Navigator.pushNamed(context, UpdateProcutScreen.id);
+                        Navigator.pushNamed(context, UpdateProcutScreen.id, arguments: snapshot.data![index]);
                       },
                       child: CustomCard(product: snapshot.data![index]));
                 },
