@@ -7,6 +7,7 @@ class AllProdctsService {
         await Api().get(url: 'https://fakestoreapi.com/products');
 
     List<ProductModel> productsList = [];
+
     for (var item in data) {
       productsList.add(ProductModel.fromJson(item));
     }
@@ -14,6 +15,3 @@ class AllProdctsService {
     return productsList;
   }
 }
-      // for (int i = 0; i < data.length; i++) {
-      //   productsList.add(ProductModel.fromJson(data[i]));
-      // }

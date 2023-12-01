@@ -1,7 +1,7 @@
 class RatingModel {
   RatingModel({required this.rate, required this.count});
 
-  final double rate;
+  final num rate;
   final int count;
 
   factory RatingModel.fromJson(jsonData) {
